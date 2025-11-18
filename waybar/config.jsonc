@@ -10,6 +10,7 @@
         "mpris",
         "idle_inhibitor",
         "pulseaudio",
+        "battery",
         "custom/power"
     ],
 
@@ -71,6 +72,18 @@
             "default": ["♪", "♫", "♬"]
         },
         "on-click": "pavucontrol"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "<span size='large'>{icon}</span> {capacity}%",
+        "format-charging": "<span size='large'>⚡</span> {capacity}%",
+        "format-plugged": "<span size='large'>⚡</span> {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+        "tooltip-format": "{timeTo}"
     },
 
     "custom/weather": {
