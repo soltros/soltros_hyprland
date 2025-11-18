@@ -46,6 +46,7 @@ window#waybar {
 #cpu,
 #memory,
 #backlight,
+#battery,
 #network,
 #pulseaudio,
 #mpris,
@@ -101,6 +102,24 @@ window#waybar {
 #custom-public_ip {
     color: #a6e3a1;
 }
+
+#battery {
+    color: #a6e3a1;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #f9e2af;
+}
+
+#battery.warning:not(.charging) {
+    color: #fab387;
+}
+
+#battery.critical:not(.charging) {
+    color: #f38ba8;
+}
+
 
 
 #idle_inhibitor.activated {
