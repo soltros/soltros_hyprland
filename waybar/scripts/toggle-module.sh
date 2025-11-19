@@ -21,22 +21,24 @@ fi
 
 # Generate dynamic CSS to hide modules
 DYNAMIC_CSS="$STATE_DIR/dynamic.css"
-echo "/* Dynamically hidden modules */" > "$DYNAMIC_CSS"
 
-for module in tray; do
-    if [ -f "$STATE_DIR/${module}_hidden" ]; then
-        css_module=$(echo "$module" | tr '_' '-')
-        cat >> "$DYNAMIC_CSS" << 'EOF'
-#tray {
-    min-width: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    opacity: 0 !important;
-    transform: scaleX(0) !important;
+if [ -f "$STATE_DIR/tray_hidden" ]; then
+    # Tray is hidden - add hiding styles
+    cat > "$DYNAMIC_CSS" << 'EOF'
+/* Dynamically hidden modules */
+window#waybar #tray {
+    min-width: 0;
+    max-width: 0;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    transform: scaleX(0);
 }
 EOF
-    fi
-done
+else
+    # Tray is visible - empty CSS file
+    echo "/* Dynamically hidden modules */" > "$DYNAMIC_CSS"
+fi
 
 # Reload waybar to apply changes
 pkill -SIGUSR2 waybar
