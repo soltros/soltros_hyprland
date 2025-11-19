@@ -439,6 +439,7 @@ notify-send "Test" "This is a test notification"
 
 ## Credits
 
+- **Base Theme:** [ChrisLAS/hyprvibe](https://github.com/ChrisLAS/hyprvibe) (heavily modified)
 - **Hyprland:** [hyprwm/Hyprland](https://github.com/hyprwm/Hyprland)
 - **Waybar:** [Alexays/Waybar](https://github.com/Alexays/Waybar)
 - **Catppuccin Theme:** [catppuccin/catppuccin](https://github.com/catppuccin/catppuccin)
