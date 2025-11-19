@@ -43,12 +43,9 @@ window#waybar {
 }
 
 @keyframes urgent-blink {
-    0%, 100% {
-        background: rgba(243, 139, 168, 0.9);
-    }
-    50% {
-        background: rgba(243, 139, 168, 0.6);
-    }
+    0% { opacity: 1.0; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1.0; }
 }
 
 #window {
