@@ -6,7 +6,6 @@
 MODULE=$1
 STATE_DIR="$HOME/.cache/waybar"
 STATE_FILE="$STATE_DIR/${MODULE}_hidden"
-WAYBAR_DIR="$HOME/.config/waybar"
 
 # Create cache directory if it doesn't exist
 mkdir -p "$STATE_DIR"
@@ -24,18 +23,16 @@ fi
 DYNAMIC_CSS="$STATE_DIR/dynamic.css"
 echo "/* Dynamically hidden modules */" > "$DYNAMIC_CSS"
 
-for module in tray mpris idle_inhibitor pulseaudio battery; do
+for module in tray; do
     if [ -f "$STATE_DIR/${module}_hidden" ]; then
-        # Convert underscores to hyphens for CSS selectors
         css_module=$(echo "$module" | tr '_' '-')
-        cat >> "$DYNAMIC_CSS" << EOF
-#${css_module} {
-    min-width: 0!important;
-    padding: 0!important;
-    margin: 0!important;
-    opacity: 0!important;
-    transform: scaleX(0)!important;
-    border-radius: 0!important;
+        cat >> "$DYNAMIC_CSS" << 'EOF'
+#tray {
+    min-width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    opacity: 0 !important;
+    transform: scaleX(0) !important;
 }
 EOF
     fi
