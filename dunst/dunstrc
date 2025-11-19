@@ -46,7 +46,7 @@
     history_length = 20
     
     dmenu = /usr/bin/rofi -dmenu -p dunst:
-    browser = /usr/share/soltros/bin/waterfox/waterfox
+    browser = /usr/share/soltros/waterfox/waterfox
     
     title = Dunst
     class = Dunst
