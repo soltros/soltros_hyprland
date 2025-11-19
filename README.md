@@ -1,5 +1,11 @@
 # Soltros Hyprland Configuration
 
+![Screenshot 1](screen1.png)
+
+![Screenshot 2](screen2.png)
+
+![Screenshot 3](screen3.png)
+
 Official Hyprland configuration for [Soltros OS](https://github.com/soltros/Soltros-OS) with a complete Wayland desktop environment featuring Catppuccin Mocha theming.
 
 ## Overview
