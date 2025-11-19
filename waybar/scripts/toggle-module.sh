@@ -28,7 +28,6 @@ if [ -f "$STATE_DIR/tray_hidden" ]; then
 /* Dynamically hidden modules */
 window#waybar #tray {
     min-width: 0;
-    max-width: 0;
     padding: 0;
     margin: 0;
     opacity: 0;
