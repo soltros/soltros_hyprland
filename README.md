@@ -255,39 +255,26 @@ Core dependencies included in Soltros OS:
 
 ### Deployment
 
-1. Clone this repository:
+**On Soltros OS:**
+
+1. Download the **Hyprvibe ISO** (Hyprland edition) from [soltros.dev](https://soltros.dev)
+
+2. After installing Soltros OS, open the Zsh terminal and run:
 ```bash
-git clone <repository-url> ~/Documents/development/soltros_hyprland
-cd ~/Documents/development/soltros_hyprland
+helper apply-soltros-personal-hyprland
 ```
 
-2. Create symlinks to config directories:
-```bash
-ln -sf ~/Documents/development/soltros_hyprland/hypr ~/.config/hypr
-ln -sf ~/Documents/development/soltros_hyprland/waybar ~/.config/waybar
-ln -sf ~/Documents/development/soltros_hyprland/dunst ~/.config/dunst
-ln -sf ~/Documents/development/soltros_hyprland/wofi ~/.config/wofi
-```
+This command will automatically backup your existing configurations and deploy the settings from this repository.
 
-3. Make scripts executable:
-```bash
-chmod +x hypr/scripts/*.sh
-chmod +x waybar/scripts/*.sh
-```
+**On Other Linux Distributions:**
 
-4. Create required directories:
-```bash
-mkdir -p ~/wallpapers
-mkdir -p ~/.cache/waybar
-mkdir -p ~/Pictures
-```
+If you want to try these configs but are not on Soltros OS, simply place the configuration files in the appropriate directories:
+- `hypr/` → `~/.config/hypr/`
+- `waybar/` → `~/.config/waybar/`
+- `dunst/` → `~/.config/dunst/`
+- `wofi/` → `~/.config/wofi/`
 
-5. Set up wallpaper:
-```bash
-cp your-wallpaper.jpg ~/wallpapers/default.jpg
-```
-
-6. Log out and select Hyprland from your display manager
+Make sure to backup your existing configurations first.
 
 ## Customization
 
