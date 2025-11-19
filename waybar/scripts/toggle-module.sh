@@ -26,8 +26,12 @@ if [ -f "$STATE_DIR/tray_hidden" ]; then
     # Tray is hidden - add hiding styles
     cat > "$DYNAMIC_CSS" << 'EOF'
 /* Dynamically hidden modules */
-window#waybar #tray {
-    all: unset;
+#tray {
+    font-size: 0;
+    min-height: 0;
+    min-width: 0;
+    padding: 0;
+    margin: 0;
 }
 EOF
 else
