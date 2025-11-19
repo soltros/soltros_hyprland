@@ -27,10 +27,7 @@ if [ -f "$STATE_DIR/tray_hidden" ]; then
     cat > "$DYNAMIC_CSS" << 'EOF'
 /* Dynamically hidden modules */
 window#waybar #tray {
-    min-width: 0;
-    padding: 0;
-    margin: 0;
-    opacity: 0;
+    all: unset;
 }
 EOF
 else
