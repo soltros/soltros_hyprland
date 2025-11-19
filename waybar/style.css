@@ -141,6 +141,20 @@ window#waybar {
     background: transparent;
 }
 
+#custom-tray-toggle {
+    padding: 0 6px;
+    margin: 1px;
+    background: rgba(49, 50, 68, 0.8);
+    border-radius: 2px;
+    color: #89b4fa;
+    min-width: 2em;
+    cursor: pointer;
+}
+
+#custom-tray-toggle:hover {
+    background: rgba(137, 180, 250, 0.3);
+}
+
 #custom-power {
     padding: 0 6px;
     margin: 1px;
@@ -158,13 +172,4 @@ tooltip {
 
 tooltip label {
     color: #cdd6f4;
-}
-
-/* Right-click hint - subtle visual feedback */
-#tray:hover,
-#mpris:hover,
-#idle_inhibitor:hover,
-#pulseaudio:hover,
-#battery:hover {
-    background: rgba(49, 50, 68, 0.9);
 }

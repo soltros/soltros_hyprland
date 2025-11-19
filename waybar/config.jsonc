@@ -6,6 +6,7 @@
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
     "modules-center": ["clock"],
     "modules-right": [
+        "custom/tray-toggle",
         "tray",
         "mpris",
         "idle_inhibitor",
@@ -36,8 +37,7 @@
         "status-icons": {
             "paused": "⏸"
         },
-        "max-length": 40,
-        "on-click-right": "~/.config/waybar/scripts/toggle-module.sh mpris"
+        "max-length": 40
     },
 
     "idle_inhibitor": {
@@ -45,8 +45,7 @@
         "format-icons": {
             "activated": "◉",
             "deactivated": "○"
-        },
-        "on-click-right": "~/.config/waybar/scripts/toggle-module.sh idle_inhibitor"
+        }
     },
 
     "gamemode": {
@@ -73,8 +72,7 @@
             "car": "⚐",
             "default": ["♪", "♫", "♬"]
         },
-        "on-click": "pavucontrol",
-        "on-click-right": "~/.config/waybar/scripts/toggle-module.sh pulseaudio"
+        "on-click": "pavucontrol"
     },
 
     "battery": {
@@ -86,8 +84,7 @@
         "format-charging": "<span size='large'>⚡</span> {capacity}%",
         "format-plugged": "<span size='large'>⚡</span> {capacity}%",
         "format-icons": ["", "", "", "", ""],
-        "tooltip-format": "{timeTo}",
-        "on-click-right": "~/.config/waybar/scripts/toggle-module.sh battery"
+        "tooltip-format": "{timeTo}"
     },
 
     "custom/weather": {
@@ -124,7 +121,14 @@
 
     "tray": {
         "icon-size": 18,
-        "spacing": 8,
-        "on-click-right": "~/.config/waybar/scripts/toggle-module.sh tray"
+        "spacing": 8
+    },
+
+    "custom/tray-toggle": {
+        "exec": "~/.config/waybar/scripts/module-status.sh tray",
+        "return-type": "json",
+        "format": "<span size='large'>{}</span>",
+        "interval": 1,
+        "on-click": "~/.config/waybar/scripts/toggle-module.sh tray"
     }
 }

@@ -1,18 +1,16 @@
 #!/bin/bash
 
-# Script to check if waybar modules are hidden
-# This outputs CSS classes that waybar will apply
+# Script to check module status and output appropriate icon
+# Usage: module-status.sh <module-name>
 
+MODULE=$1
 STATE_DIR="$HOME/.cache/waybar"
+STATE_FILE="$STATE_DIR/${MODULE}_hidden"
 
-# Check each module and output class if hidden
-CLASSES=""
-
-for module in tray mpris idle_inhibitor pulseaudio battery; do
-    if [ -f "$STATE_DIR/${module}_hidden" ]; then
-        CLASSES="$CLASSES ${module}-hidden"
-    fi
-done
-
-# Output classes for waybar to use
-echo "$CLASSES" | xargs
+if [ -f "$STATE_FILE" ]; then
+    # Module is hidden - show chevron pointing right to indicate it can be shown
+    echo '{"text": "❯", "tooltip": "Show tray"}'
+else
+    # Module is visible - show chevron pointing left to indicate it can be hidden
+    echo '{"text": "❮", "tooltip": "Hide tray"}'
+fi

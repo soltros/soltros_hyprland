@@ -30,12 +30,12 @@ for module in tray mpris idle_inhibitor pulseaudio battery; do
         css_module=$(echo "$module" | tr '_' '-')
         cat >> "$DYNAMIC_CSS" << EOF
 #${css_module} {
-    min-width: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    opacity: 0 !important;
-    transform: scaleX(0) !important;
-    border-radius: 0 !important;
+    min-width: 0!important;
+    padding: 0!important;
+    margin: 0!important;
+    opacity: 0!important;
+    transform: scaleX(0)!important;
+    border-radius: 0!important;
 }
 EOF
     fi
