@@ -36,6 +36,21 @@ window#waybar {
     color: #1e1e2e;
 }
 
+#workspaces button.urgent {
+    background: rgba(243, 139, 168, 0.9);
+    color: #1e1e2e;
+    animation: urgent-blink 1s ease-in-out infinite;
+}
+
+@keyframes urgent-blink {
+    0%, 100% {
+        background: rgba(243, 139, 168, 0.9);
+    }
+    50% {
+        background: rgba(243, 139, 168, 0.6);
+    }
+}
+
 #window {
     padding: 0 6px;
     margin: 1px;
