@@ -23,15 +23,22 @@ fi
 DYNAMIC_CSS="$STATE_DIR/dynamic.css"
 
 if [ -f "$STATE_DIR/tray_hidden" ]; then
-    # Tray is hidden - add hiding styles
+    # Tray is hidden - completely hide and collapse the tray
     cat > "$DYNAMIC_CSS" << 'EOF'
 /* Dynamically hidden modules */
-#tray {
-    font-size: 0;
+#tray > * {
     min-height: 0;
     min-width: 0;
     padding: 0;
     margin: 0;
+    border: 0;
+    font-size: 0;
+}
+#tray {
+    min-width: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
 }
 EOF
 else
