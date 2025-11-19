@@ -149,7 +149,6 @@ window#waybar {
     border-radius: 2px;
     color: #89b4fa;
     min-width: 2em;
-    cursor: pointer;
 }
 
 #custom-tray-toggle:hover {
