@@ -31,7 +31,6 @@ window#waybar #tray {
     padding: 0;
     margin: 0;
     opacity: 0;
-    transform: scaleX(0);
 }
 EOF
 else
