@@ -36,7 +36,8 @@
         "status-icons": {
             "paused": "⏸"
         },
-        "max-length": 40
+        "max-length": 40,
+        "on-click-right": "~/.config/waybar/scripts/toggle-module.sh mpris"
     },
 
     "idle_inhibitor": {
@@ -44,7 +45,8 @@
         "format-icons": {
             "activated": "◉",
             "deactivated": "○"
-        }
+        },
+        "on-click-right": "~/.config/waybar/scripts/toggle-module.sh idle_inhibitor"
     },
 
     "gamemode": {
@@ -71,7 +73,8 @@
             "car": "⚐",
             "default": ["♪", "♫", "♬"]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
+        "on-click-right": "~/.config/waybar/scripts/toggle-module.sh pulseaudio"
     },
 
     "battery": {
@@ -83,7 +86,8 @@
         "format-charging": "<span size='large'>⚡</span> {capacity}%",
         "format-plugged": "<span size='large'>⚡</span> {capacity}%",
         "format-icons": ["", "", "", "", ""],
-        "tooltip-format": "{timeTo}"
+        "tooltip-format": "{timeTo}",
+        "on-click-right": "~/.config/waybar/scripts/toggle-module.sh battery"
     },
 
     "custom/weather": {
@@ -120,6 +124,7 @@
 
     "tray": {
         "icon-size": 18,
-        "spacing": 8
+        "spacing": 8,
+        "on-click-right": "~/.config/waybar/scripts/toggle-module.sh tray"
     }
 }
