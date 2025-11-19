@@ -238,23 +238,6 @@ All custom widgets return JSON format and are ready to be added to config:
 
 ## Installation
 
-### Prerequisites
-
-Soltros OS ships with these dependencies pre-installed. If you need to layer additional packages on the immutable base system:
-
-```bash
-rpm-ostree install <package-name>
-rpm-ostree apply-live  # Apply without reboot (optional)
-```
-
-Core dependencies included in Soltros OS:
-- hyprland, waybar, dunst, wofi, hyprlock, hyprpaper
-- alacritty, rofi, wlogout, grim, slurp, wl-clipboard, cliphist
-- pavucontrol, blueman, brightnessctl, playerctl, dolphin
-- lm-sensors, jq, curl
-
-### Deployment
-
 **On Soltros OS:**
 
 1. Download the **Hyprvibe ISO** (Hyprland edition) from [soltros.dev](https://soltros.dev)
