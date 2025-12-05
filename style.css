@@ -1,44 +1,64 @@
+@import url("file:///home/derrik/.cache/waybar/dynamic.css");
+
 * {
     border: none;
-    border-radius: 0;
+    border-radius: 10px 10px 0 0;
     font-family: "JetBrainsMono Nerd Font", monospace;
     font-size: 11px;
     min-height: 0;
 }
 
 window#waybar {
-    background: rgba(30, 30, 46, 0.75);
+    background: transparent;
     color: #cdd6f4;
 }
 
 #workspaces {
-    background: transparent;
+    background: rgba(49, 50, 68, 0.8);
+    padding: 4px 10px;
+    margin: -2px 1px;
+    border-radius: 10px 10px 0 0;
 }
 
 #workspaces button {
     padding: 0 4px;
-    background: rgba(49, 50, 68, 0.8);
+    background: transparent;
     color: #cdd6f4;
-    margin: 1px;
-    border-radius: 2px;
+    margin: 0;
+    border-radius: 0;
     min-width: 20px;
+    box-shadow: none;
+    text-shadow: none;
+    border: none;
 }
 
 #workspaces button.active {
-    background: rgba(137, 180, 250, 0.8);
-    color: #1e1e2e;
+    background: transparent;
+    color: #89b4fa;
 }
 
 #workspaces button:hover {
-    background: rgba(116, 199, 236, 0.8);
+    background: transparent;
+    color: #74c7ec;
+}
+
+#workspaces button.urgent {
+    background: rgba(243, 139, 168, 0.9);
     color: #1e1e2e;
+    animation: urgent-blink 1s ease-in-out infinite;
+}
+
+@keyframes urgent-blink {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1.0; }
 }
 
 #window {
-    padding: 0 6px;
-    margin: 1px;
+    padding: 4px 10px;
+    margin: -2px 1px;
     background: rgba(49, 50, 68, 0.8);
-    border-radius: 2px;
+    border-radius: 10px 10px 0 0;
     color: #cdd6f4;
 }
 
@@ -58,13 +78,16 @@ window#waybar {
 #custom-btc,
 #custom-public_ip,
 #custom-brightness_menu,
-#custom-reboot {
-    padding: 0 6px;
-    margin: 1px;
+#custom-reboot,
+#custom-launcher,
+#custom-terminal {
+    padding: 4px 10px;
+    margin: -2px 1px;
     background: rgba(49, 50, 68, 0.8);
-    border-radius: 2px;
+    border-radius: 10px 10px 0 0;
     color: #cdd6f4;
     min-width: 2em;
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
 #pulseaudio {
@@ -138,11 +161,40 @@ window#waybar {
     background: transparent;
 }
 
-#custom-power {
-    padding: 0 6px;
-    margin: 1px;
+#custom-tray-toggle {
+    padding: 4px 10px;
+    margin: -2px 1px;
     background: rgba(49, 50, 68, 0.8);
-    border-radius: 2px;
+    border-radius: 10px 10px 0 0;
+    color: #89b4fa;
+    min-width: 2em;
+}
+
+#custom-tray-toggle:hover {
+    background: rgba(137, 180, 250, 0.3);
+}
+
+#custom-launcher {
+    color: #89b4fa;
+}
+
+#custom-launcher:hover {
+    background: rgba(137, 180, 250, 0.3);
+}
+
+#custom-terminal {
+    color: #a6e3a1;
+}
+
+#custom-terminal:hover {
+    background: rgba(166, 227, 161, 0.3);
+}
+
+#custom-power {
+    padding: 4px 10px;
+    margin: -2px 1px;
+    background: rgba(49, 50, 68, 0.8);
+    border-radius: 10px 10px 0 0;
     color: #cba6f7;
     min-width: 2em;
 }
@@ -150,7 +202,7 @@ window#waybar {
 tooltip {
     background: rgba(30, 30, 46, 0.95);
     border: 2px solid rgba(137, 180, 250, 0.8);
-    border-radius: 2px;
+    border-radius: 16px;
 }
 
 tooltip label {
