@@ -1,9 +1,9 @@
 {
     "layer": "top",
-    "position": "top",
+    "position": "bottom",
     "height": 28,
     "spacing": 6,
-    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
     "modules-right": [
         "custom/tray-toggle",
@@ -11,12 +11,17 @@
         "mpris",
         "idle_inhibitor",
         "pulseaudio",
+        "network",
         "battery",
         "custom/power"
     ],
 
     "hyprland/workspaces": {
-        "format": "{name}",
+        "format": "{icon}",
+        "format-icons": {
+            "active": "●",
+            "default": "○"
+        },
         "on-click": "activate",
         "sort-by-number": true
     },
@@ -73,6 +78,17 @@
             "default": ["♪", "♫", "♬"]
         },
         "on-click": "pavucontrol"
+    },
+
+    "network": {
+        "format-wifi": "<span size='large'>⚇</span> {essid}",
+        "format-ethernet": "<span size='large'>⚏</span> {ifname}",
+        "format-disconnected": "<span size='large'>✖</span> Disconnected",
+        "tooltip-format": "{ifname}: {ipaddr}/{cidr}\nSignal: {signalStrength}%\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+        "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+        "tooltip-format-disconnected": "Disconnected",
+        "max-length": 30,
+        "on-click": "nm-connection-editor"
     },
 
     "battery": {
