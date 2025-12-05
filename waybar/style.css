@@ -78,7 +78,9 @@ window#waybar {
 #custom-btc,
 #custom-public_ip,
 #custom-brightness_menu,
-#custom-reboot {
+#custom-reboot,
+#custom-launcher,
+#custom-terminal {
     padding: 4px 10px;
     margin: -2px 1px;
     background: rgba(49, 50, 68, 0.8);
@@ -170,6 +172,22 @@ window#waybar {
 
 #custom-tray-toggle:hover {
     background: rgba(137, 180, 250, 0.3);
+}
+
+#custom-launcher {
+    color: #89b4fa;
+}
+
+#custom-launcher:hover {
+    background: rgba(137, 180, 250, 0.3);
+}
+
+#custom-terminal {
+    color: #a6e3a1;
+}
+
+#custom-terminal:hover {
+    background: rgba(166, 227, 161, 0.3);
 }
 
 #custom-power {

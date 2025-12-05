@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "position": "bottom",
-    "height": 28,
+    "height": 24,
     "spacing": 6,
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["clock"],
@@ -138,6 +138,20 @@
     "tray": {
         "icon-size": 18,
         "spacing": 8
+    },
+
+    "custom/launcher": {
+        "format": "<span size='large'>◆</span>",
+        "tooltip": true,
+        "tooltip-format": "Launch Application",
+        "on-click": "rofi -show drun -show-icons || wofi --show drun"
+    },
+
+    "custom/terminal": {
+        "format": "<span size='large'>◆</span>",
+        "tooltip": true,
+        "tooltip-format": "Terminal",
+        "on-click": "alacritty --class 'Alacritty-fullscreen,Alacritty' -o window.startup_mode='Fullscreen'"
     },
 
     "custom/tray-toggle": {
