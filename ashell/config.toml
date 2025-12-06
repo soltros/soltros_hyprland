@@ -34,7 +34,11 @@ enable_esc_to_close_menu = true
 [modules]
 left = [ "Workspaces", "WindowTitle" ]
 center = [ "Clock" ]
-right = [ "SystemInfo", "Tray", [ "MediaPlayer", "Privacy", "Settings" ] ]
+right = [ "SystemInfo", "Tray", "Settings", "MediaPlayer", "Privacy" ]
+
+# Clock configuration
+[clock]
+format = "%D %r"
 
 # Workspaces Configuration
 [workspaces]
