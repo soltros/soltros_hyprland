@@ -33,8 +33,8 @@ enable_esc_to_close_menu = true
 # Modules in arrays (e.g., [ "Clock", "Privacy", "Settings" ]) are grouped together
 [modules]
 left = [ "Workspaces", "WindowTitle" ]
-center = [ "MediaPlayer" ]
-right = [ "SystemInfo", "Tray", [ "Clock", "Privacy", "Settings" ] ]
+center = [ "Clock" ]
+right = [ "SystemInfo", "Tray", [ "MediaPlayer", "Privacy", "Settings" ] ]
 
 # Workspaces Configuration
 [workspaces]
