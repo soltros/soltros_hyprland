@@ -1,0 +1,88 @@
+# Ashell Configuration for Hyprland
+# https://malpenzibo.github.io/ashell/docs/configuration/main
+
+# Log Level
+# Controls verbosity of logs. Options: debug, info, warn, error
+# You can also specify module-specific logging, e.g.:
+# "warn,ashell=info,ashell::services::network=debug"
+log_level = "warn"
+
+# Outputs
+# Configure which monitor(s) should display the status bar
+# Options:
+#   "All" - Render on all monitors
+#   "Active" - Render only on the active/focused monitor
+#   { Targets = ["DP-1", "eDP-1"] } - Render on specific monitors
+outputs = "All"
+
+# Position
+# Set the position of the status bar
+# Options: "Top" or "Bottom"
+position = "Top"
+
+# Enable ESC to close menu
+# When enabled, ESC key will close menus
+# Warning: This uses keyboard exclusively when menu is open
+enable_esc_to_close_menu = true
+
+# App Launcher Command (optional - uncomment and customize if needed)
+# app_launcher_cmd = "wofi --show drun"
+
+# Modules Configuration
+# Organize modules into left, center, and right sections
+# Modules in arrays (e.g., [ "Clock", "Privacy", "Settings" ]) are grouped together
+[modules]
+left = [ "Workspaces", "WindowTitle" ]
+center = [ "MediaPlayer" ]
+right = [ "SystemInfo", "Tray", [ "Clock", "Privacy", "Settings" ] ]
+
+# Workspaces Configuration
+[workspaces]
+enable_workspace_filling = true
+
+# Window Title Configuration
+[window_title]
+truncate_title_after_length = 100
+
+# Settings Module Configuration
+[settings]
+# Lock command - uses hyprlock from your Hyprland setup
+lock_cmd = "playerctl --all-players pause; hyprlock &"
+# Bluetooth settings - you have blueman-applet running
+bluetooth_more_cmd = "blueman-manager"
+# Network settings (uncomment if you have nm-connection-editor installed)
+# wifi_more_cmd = "nm-connection-editor"
+# vpn_more_cmd = "nm-connection-editor"
+# Audio sink settings (uncomment if you have pavucontrol)
+# audio_sinks_more_cmd = "pavucontrol -t 3"
+# audio_sources_more_cmd = "pavucontrol -t 4"
+
+# Updates Module Configuration (uncomment to enable)
+# [updates]
+# check_cmd = "checkupdates"
+# update_cmd = "kitty -e bash -c 'sudo pacman -Syu; echo Done - Press enter to exit; read' &"
+
+# Appearance Configuration - Catppuccin Mocha Theme
+[appearance]
+style = "Islands"
+success_color = "#a6e3a1"
+text_color = "#cdd6f4"
+workspace_colors = [ "#fab387", "#b4befe", "#cba6f7" ]
+special_workspace_colors = [ "#fab387", "#b4befe", "#cba6f7" ]
+
+[appearance.primary_color]
+base = "#fab387"
+text = "#1e1e2e"
+
+[appearance.danger_color]
+base = "#f38ba8"
+weak = "#f9e2af"
+
+[appearance.background_color]
+base = "#1e1e2e"
+weak = "#313244"
+strong = "#45475a"
+
+[appearance.secondary_color]
+base = "#11111b"
+strong = "#1b1b25"
