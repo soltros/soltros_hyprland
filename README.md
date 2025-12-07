@@ -1,17 +1,13 @@
 # Soltros Hyprland Configuration
 
-![Screenshot 1](screen1.png)
-
-![Screenshot 2](screen2.png)
-
-![Screenshot 3](screen3.png)
+![Screenshot 1](a.png)
 
 Official Hyprland configuration for [Soltros OS](https://github.com/soltros/Soltros-OS) with a complete Wayland desktop environment featuring Catppuccin Mocha theming.
 
 ## Overview
 
 This repository contains a fully configured Hyprland desktop environment with:
-- Custom Waybar configuration with tray toggle functionality
+- Ashell modern status bar with dynamic modules
 - Hyprland window manager with optimized animations and blur effects
 - Dunst notification system
 - Wofi application launcher
@@ -23,7 +19,7 @@ This repository contains a fully configured Hyprland desktop environment with:
 
 All components use the **Catppuccin Mocha** color palette:
 - Base: `#1e1e2e`
-- Mantle: `#303446`
+- Mantle: `#181825`
 - Surface: `#313244`
 - Text: `#cdd6f4`
 - Blue: `#89b4fa`
@@ -43,19 +39,9 @@ All components use the **Catppuccin Mocha** color palette:
 │   ├── hyprlock.conf        # Screen lock configuration
 │   ├── hyprpaper.conf       # Wallpaper configuration
 │   └── scripts/
-│       └── toggle_floating_waybar.sh
-├── waybar/
-│   ├── config.jsonc         # Active Waybar config (dynamically updated)
-│   ├── config-with-tray.jsonc   # Base config with system tray
-│   ├── style.css            # Waybar styling
-│   └── scripts/
-│       ├── toggle-module.sh     # Toggle tray visibility
-│       ├── module-status.sh     # Display tray toggle status
-│       ├── hide-module.sh       # Hide/show modules
-│       ├── btc-price.sh         # Bitcoin price widget
-│       ├── gpu-temp.sh          # GPU temperature monitor
-│       ├── public-ip.sh         # Public IP display
-│       └── weather.sh           # Weather information
+│       └── toggle_floating_waybar.sh  # Floating window + bar toggle
+├── ashell/
+│   └── config.toml          # Ashell status bar configuration
 ├── dunst/
 │   └── dunstrc              # Notification configuration
 └── wofi/
@@ -63,6 +49,35 @@ All components use the **Catppuccin Mocha** color palette:
 ```
 
 ## Components
+
+### Ashell (Status Bar)
+
+**Configuration File:** [ashell/config.toml](ashell/config.toml)
+
+#### Layout:
+- **Left:** Workspaces, Window title (truncated at 100 chars)
+- **Center:** Clock
+- **Right:** SystemInfo, Tray, Settings, MediaPlayer, Privacy
+
+#### Features:
+- **Position:** Top of screen across all monitors
+- **Log Level:** Configurable (warn/info/debug/error)
+- **ESC Key:** Closes open menus
+- **App Launcher:** Wofi (`wofi --show drun`)
+- **Clock Format:** `%D %r` (date and time)
+- **Workspace Filling:** Enabled for better visual consistency
+- **Lock Command:** Pauses all media players and launches hyprlock
+- **Settings Integration:**
+  - Bluetooth: `blueman-manager`
+  - Network: `nm-connection-editor`
+  - Audio: `pavucontrol`
+
+#### Color Palette (Catppuccin Mocha):
+- **Primary:** Peach (`#fab387`) with dark text (`#11111b`)
+- **Danger:** Pink (`#f38ba8`)
+- **Background:** Graduated layers from base (`#1e1e2e`) to strong (`#45475a`)
+- **Success:** Green (`#a6e3a1`)
+- **Text Colors:** Configured from dim (`#7f849c`) to bright (`#cdd6f4`)
 
 ### Hyprland (Window Manager)
 
@@ -72,25 +87,30 @@ All components use the **Catppuccin Mocha** color palette:
 - **Gaps:** 5px inner, 20px outer
 - **Border:** 2px width with blue active border (`#89b4fa`)
 - **Opacity:** Active windows at 100%, inactive at 90%
+- **Rounding:** 10px corner radius
 - **Layout:** Dwindle with pseudotiling support
-- **Blur:** 8px size, 2 passes, optimized with custom vibrancy/noise settings
+- **Blur:** 8px size, 2 passes, optimized settings
+  - Vibrancy: 0.1696, Noise: 0.0117
+  - Contrast: 0.8916, Brightness: 0.8172
 - **Animations:** Smooth bezier curves (easeOutQuint, easeInOutCubic)
 
 #### Auto-start Applications:
-- Waybar (status bar)
+- Ashell (status bar)
 - Dunst (notifications)
 - Hyprpaper (wallpaper)
 - Hypridle (idle management)
 - Blueman-applet (Bluetooth)
 - Playerctld (media player daemon)
+- nm-applet (network manager)
 - Clipboard manager (wl-paste + cliphist)
+- Steam, Discord, Telegram Desktop, Feishin, Heroic Games Launcher, EasyEffects, Cinny
 
 #### Workspace Assignments:
 | Workspace | Application |
 |-----------|-------------|
 | 2 | Steam |
 | 3 | Discord |
-| 4 | Telegram |
+| 4 | Telegram Desktop |
 | 5 | Feishin (music player) |
 | 6 | Heroic Games Launcher |
 | 7 | EasyEffects (audio effects) |
@@ -106,20 +126,10 @@ All components use the **Catppuccin Mocha** color palette:
 - `Super + E` - File manager (Dolphin)
 - `Super + F` - Browser (Waterfox)
 - `Super + O` - Obsidian
-- `Super + Space` - Application launcher (Rofi)
 - `Super + R` - Wofi launcher (drun mode)
-- `Super + Alt + R` - Wofi file browser
-- `Super + Ctrl + R` - Wofi keybindings
 - `Super + P` - Toggle pseudotiling
 - `Super + J` - Toggle split direction
-- `Super + V` - Toggle floating with Waybar auto-hide
-
-**Waybar Control:**
-- `Super + Shift + W` - Restart Waybar
-
-**Display Power:**
-- `Super + Shift + L` - Screen off (DPMS off)
-- `Super + Alt + L` - Screen on (DPMS on)
+- `Super + V` - Toggle floating with Ashell auto-hide
 
 **Focus Movement:**
 - `Super + Arrow Keys` - Move focus between windows
@@ -144,45 +154,6 @@ All components use the **Catppuccin Mocha** color palette:
 - `XF86MonBrightnessUp/Down` - Brightness control
 - `XF86AudioPlay/Next/Prev` - Media controls
 
-### Waybar (Status Bar)
-
-**Configuration Files:**
-- [waybar/config.jsonc](waybar/config.jsonc) (active, dynamically updated)
-- [waybar/config-with-tray.jsonc](waybar/config-with-tray.jsonc) (base template)
-- [waybar/style.css](waybar/style.css)
-
-#### Layout:
-- **Left:** Workspaces, Window title
-- **Center:** Clock with calendar
-- **Right:** Tray toggle, System tray, Media player (MPRIS), Idle inhibitor, Volume, Battery, Power menu
-
-#### Features:
-- **Dynamic Tray Toggle:** Click the chevron icon to show/hide system tray
-  - `❮` = Tray visible (click to hide)
-  - `❯` = Tray hidden (click to show)
-- **Workspace Indicators:**
-  - Normal: Gray background (`rgba(49, 50, 68, 0.8)`)
-  - Active: Blue background (`rgba(137, 180, 250, 0.8)`)
-  - Urgent: Pink background with pulsing animation (`rgba(243, 139, 168, 0.9)`)
-  - Hover: Cyan background (`rgba(116, 199, 236, 0.8)`)
-- **Blur Effect:** Layer rule applies blur to Waybar background
-- **Transparency:** 75% opacity for background, 10% alpha ignored for blur
-- **Media Display:** Shows currently playing media with artist and title (max 40 chars)
-- **Battery States:** Warning at 30%, Critical at 15%
-- **Clock Format:** `Wed Nov 19  09:30 AM` with yearly calendar tooltip
-
-#### Custom Widgets (Available in scripts):
-All custom widgets return JSON format and are ready to be added to config:
-- **Bitcoin Price:** CoinGecko API, updates on interval
-- **GPU Temperature:** AMD GPU edge temperature via lm_sensors
-- **Public IP:** Masked display (xxx.xxx.xxx.xxx) with full IP in tooltip
-- **Weather:** wttr.in integration, defaults to Toronto (set `$WEATHER_LOCATION` to customize)
-
-#### Scripts:
-- [toggle-module.sh](waybar/scripts/toggle-module.sh) - Swaps between configs with/without tray
-- [module-status.sh](waybar/scripts/module-status.sh) - Returns current tray visibility status
-- [hide-module.sh](waybar/scripts/hide-module.sh) - Generic module visibility toggle
-
 ### Hyprlock (Screen Lock)
 
 **Configuration File:** [hypr/hyprlock.conf](hypr/hyprlock.conf)
@@ -199,7 +170,7 @@ All custom widgets return JSON format and are ready to be added to config:
 
 **Configuration File:** [hypr/hyprpaper.conf](hypr/hyprpaper.conf)
 
-- **Wallpaper Path:** `~/wallpapers/default.jpg`
+- **Wallpaper Path:** `~/wallpapers/default.png`
 - **Splash Screen:** Disabled
 - **IPC:** Disabled
 
@@ -241,6 +212,7 @@ All custom widgets return JSON format and are ready to be added to config:
 - **Input Focus:** Orange glow effect (`#ef9f76`)
 - **Selection:** Gray highlight (`#626880`)
 - **Alternating Rows:** Slight background variation (`#3C4053`)
+- **Background:** `#303446`
 
 ## Installation
 
@@ -248,7 +220,7 @@ All custom widgets return JSON format and are ready to be added to config:
 
 1. Download the **Hyprvibe ISO** (Hyprland edition) from [soltros.dev](https://soltros.dev)
 
-2. After installing Soltros OS, open the Zsh terminal and run:
+2. After installing Soltros OS, open the terminal and run:
 ```bash
 helper apply-soltros-personal-hyprland
 ```
@@ -257,13 +229,49 @@ This command will automatically backup your existing configurations and deploy t
 
 **On Other Linux Distributions:**
 
-If you want to try these configs but are not on Soltros OS, simply place the configuration files in the appropriate directories:
+Place the configuration files in the appropriate directories:
 - `hypr/` → `~/.config/hypr/`
-- `waybar/` → `~/.config/waybar/`
+- `ashell/` → `~/.config/ashell/`
 - `dunst/` → `~/.config/dunst/`
 - `wofi/` → `~/.config/wofi/`
 
 Make sure to backup your existing configurations first.
+
+## Dependencies
+
+**Core Components:**
+- Hyprland (window manager)
+- Ashell (status bar)
+- Dunst (notifications)
+- Wofi (application launcher)
+- Hyprlock (screen locker)
+- Hyprpaper (wallpaper manager)
+- Hypridle (idle management)
+
+**Utilities:**
+- alacritty (terminal)
+- dolphin (file manager)
+- waterfox (browser)
+- rofi (menu/launcher)
+- wl-paste, cliphist (clipboard)
+- brightnessctl (brightness control)
+- wpctl (volume control)
+- playerctl (media controls)
+- grim, slurp (screenshot tools)
+- hyprctl (Hyprland control)
+- jq (JSON processing)
+
+**Optional Applications:**
+- Steam, Discord, Telegram Desktop
+- Feishin (music player)
+- Heroic Games Launcher
+- EasyEffects (audio effects)
+- Cinny (Matrix client)
+- Obsidian (notes)
+- blueman (Bluetooth manager)
+- nm-applet (network manager)
+- lm-sensors (GPU temperature monitoring)
+- pavucontrol (audio settings)
 
 ## Customization
 
@@ -272,12 +280,12 @@ Make sure to backup your existing configurations first.
 Edit both [hypr/hyprpaper.conf](hypr/hyprpaper.conf) and [hypr/hyprlock.conf](hypr/hyprlock.conf):
 ```conf
 # hyprpaper.conf
-preload = ~/wallpapers/your-image.jpg
-wallpaper = ,~/wallpapers/your-image.jpg
+preload = ~/wallpapers/your-image.png
+wallpaper = ,~/wallpapers/your-image.png
 
 # hyprlock.conf
 background {
-    path = ~/wallpapers/your-image.jpg
+    path = ~/wallpapers/your-image.png
 }
 ```
 
@@ -293,49 +301,33 @@ Find application class with:
 hyprctl clients
 ```
 
-### Adjusting Waybar Modules
+### Adjusting Ashell Modules
 
-1. Edit [waybar/config-with-tray.jsonc](waybar/config-with-tray.jsonc) (base template)
-2. Add modules to `modules-left`, `modules-center`, or `modules-right`
-3. Toggle tray to regenerate active config, or manually restart Waybar
-
-### Enabling Custom Waybar Widgets
-
-Add to `modules-right` in [waybar/config-with-tray.jsonc](waybar/config-with-tray.jsonc):
-```jsonc
-"custom/btc": {
-    "exec": "~/.config/waybar/scripts/btc-price.sh",
-    "return-type": "json",
-    "interval": 300
-},
-"custom/gpu": {
-    "exec": "~/.config/waybar/scripts/gpu-temp.sh",
-    "return-type": "json",
-    "interval": 5
-},
-"custom/weather": {
-    "exec": "~/.config/waybar/scripts/weather.sh",
-    "return-type": "json",
-    "interval": 1800
-},
-"custom/public_ip": {
-    "exec": "~/.config/waybar/scripts/public-ip.sh",
-    "return-type": "json",
-    "interval": 300
-}
+Edit [ashell/config.toml](ashell/config.toml) to configure module layout:
+```toml
+[bar.modules]
+left = ["workspaces", "window_title"]
+center = ["clock"]
+right = ["system_info", "tray", "settings", "media_player", "privacy"]
 ```
 
-### Changing Weather Location
+Each module can be customized with specific colors, formats, and behavior settings.
 
-Set environment variable before launching Waybar:
-```bash
-export WEATHER_LOCATION="New York"
+### Changing Clock Format
+
+Edit [ashell/config.toml](ashell/config.toml):
+```toml
+[bar.modules.clock]
+format = "%D %r"  # Change to your preferred format
+# Examples:
+# "%H:%M" - 24-hour time
+# "%I:%M %p" - 12-hour with AM/PM
+# "%A, %B %d" - Full date
 ```
 
-Or add to [hypr/hyprland.conf](hypr/hyprland.conf):
-```conf
-env = WEATHER_LOCATION,New York
-```
+### Modifying Ashell Colors
+
+Edit the `[bar.theme.colors]` section in [ashell/config.toml](ashell/config.toml) to customize the color scheme. The configuration uses Catppuccin Mocha by default but can be changed to any palette.
 
 ### Key Binding Modifications
 
@@ -346,36 +338,23 @@ bind = MODIFIER, KEY, action, parameters
 
 Modifiers: `SUPER`, `SHIFT`, `ALT`, `CTRL`
 
-Reload config: `Super + Shift + W` (for Waybar) or `hyprctl reload` (for Hyprland)
+Reload config: `hyprctl reload` (for Hyprland)
 
 ## Troubleshooting
 
-### Waybar Not Showing
+### Ashell Not Showing
 ```bash
 # Check if running
-pgrep waybar
+pgrep ashell
 
-# Restart with keybind
-Super + Shift + W
-
-# Or manually
-pkill waybar && waybar &
-```
-
-### Tray Toggle Not Working
-```bash
-# Verify state files
-ls ~/.cache/waybar/
-
-# Reset tray state
-rm ~/.cache/waybar/tray_hidden
-pkill -SIGUSR2 waybar
+# Or manually restart
+pkill ashell && ashell &
 ```
 
 ### Wallpaper Not Loading
 ```bash
 # Verify file exists
-ls -lh ~/wallpapers/default.jpg
+ls -lh ~/wallpapers/default.png
 
 # Restart hyprpaper
 pkill hyprpaper && hyprpaper &
@@ -389,7 +368,7 @@ hyprctl clients | grep -i "class"
 # Verify windowrulev2 matches the class exactly
 ```
 
-### GPU Temperature Not Showing
+### GPU Temperature Not Showing (if enabled)
 ```bash
 # Install lm_sensors
 sudo dnf install lm-sensors
@@ -413,11 +392,22 @@ pkill dunst && dunst &
 notify-send "Test" "This is a test notification"
 ```
 
+### Lock Screen Not Working
+```bash
+# Verify hyprlock is installed
+which hyprlock
+
+# Test manually
+hyprlock
+
+# Check wallpaper path in hyprlock.conf
+```
+
 ## Credits
 
 - **Base Theme:** [ChrisLAS/hyprvibe](https://github.com/ChrisLAS/hyprvibe) (heavily modified)
 - **Hyprland:** [hyprwm/Hyprland](https://github.com/hyprwm/Hyprland)
-- **Waybar:** [Alexays/Waybar](https://github.com/Alexays/Waybar)
+- **Ashell:** Modern Wayland status bar
 - **Catppuccin Theme:** [catppuccin/catppuccin](https://github.com/catppuccin/catppuccin)
 - **JetBrainsMono Nerd Font:** [ryanoasis/nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
 
