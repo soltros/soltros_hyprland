@@ -68,7 +68,7 @@ bluetooth_more_cmd = "blueman-manager"
 
 # Appearance Configuration - Catppuccin Mocha Theme
 [appearance]
-style = "Islands"
+style = "Gradient"
 success_color = "#a6e3a1"
 text_color = "#cdd6f4"
 workspace_colors = [ "#fab387", "#b4befe", "#cba6f7" ]
